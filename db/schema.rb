@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_02_023854) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_02_175209) do
+  create_table "matches", force: :cascade do |t|
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "player_id", null: false
+    t.string "date"
+    t.integer "level"
+    t.index ["player_id"], name: "index_matches_on_player_id"
+  end
+
   create_table "players", force: :cascade do |t|
     t.string "username"
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "matches", "players"
 end
