@@ -1,6 +1,5 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: %i[ show update destroy ]
-
   # GET /players
   def index
     @players = Player.all
@@ -13,14 +12,21 @@ class PlayersController < ApplicationController
     render json: @player
   end
 
-  # POST /players
-  def create
-    @player = Player.new(player_params)
-
-    if @player.save
-      render json: @player, status: :created, location: @player
+  def login
+    player = Player.find_by(username: params[:player][:username])
+    if player && player.authenticate(params[:player][:password])
+      render json: { message: "Login successful", player: player }
     else
-      render json: @player.errors, status: :unprocessable_entity
+      render json: { error: "Invalid credentials", param: params }, status: :unauthorized
+    end
+  end
+
+  def register
+    player = Player.new(player_params)
+    if player.save
+      render json: { message: "Registration successful", player: player }
+    else
+      render json: { errors: player.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -46,6 +52,6 @@ class PlayersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def player_params
-      params.expect(player: [ :username, :password ])
+      params.expect(player: [ :username, :password, :password_confirmation ])
     end
 end
