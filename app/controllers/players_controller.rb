@@ -44,6 +44,54 @@ class PlayersController < ApplicationController
     @player.destroy!
   end
 
+
+  def ranking
+    @player = Player.find(params[:id])  # Obtener el jugador por su ID
+    
+    # Calcular el puntaje total del jugador
+    total_score = @player.matches.sum(:score)
+
+    # Obtener los partidos (matches) del jugador
+    player_matches = @player.matches.select(:id, :score, :created_at, :updated_at, :level, :time, :points, :recolected)
+
+    # Obtener el ranking global de los 5 mejores jugadores, incluyendo al jugador actual
+    @ranking = Player.joins('LEFT JOIN matches ON matches.player_id = players.id')
+                     .select('players.id, players.username, COALESCE(SUM(matches.score), 0) AS total_score')
+                     .group('players.id')
+                     .order('total_score DESC')
+                     .limit(5)
+
+    # Devolvemos el JSON con el jugador, su puntaje y los matches
+    render json: { 
+      player: { 
+        id: @player.id, 
+        username: @player.username,
+        total_score: total_score 
+      },
+      ranking: {
+        player_matches: player_matches.map { |match| 
+          { 
+            id: match.id, 
+            score: match.score,
+            created_at: match.created_at,
+            updated_at: match.updated_at,
+            level: match.level,
+            time: match.time,
+            points: match.points,
+            recolected: match.recolected
+          } 
+        },
+        global_ranking: @ranking.map { |player| 
+          { 
+            id: player.id, 
+            username: player.username, 
+            total_score: player.total_score
+          } 
+        }
+      }
+    }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_player
