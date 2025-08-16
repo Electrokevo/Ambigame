@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Snakes"
-run/main_scene="res://Scenes/Snake.tscn"
+run/main_scene="uid://db6cpih6erwgv"
 config/features=PackedStringArray("4.4", "C#", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=1080
+window/size/viewport_height=720
 
 [dotnet]
 
@@ -30,7 +30,3 @@ mouse_right={
 "deadzone": 0.5,
 "events": []
 }
-
-[rendering]
-
-renderer/rendering_method="mobile"
