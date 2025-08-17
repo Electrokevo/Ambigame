@@ -12,6 +12,17 @@ public partial class LoginScene : MarginContainer
 		_username = GetNode<TextEdit>("HBoxContainer/VBoxContainer/Fields/UsernameBox");
 		_password = GetNode<TextEdit>("HBoxContainer/VBoxContainer/Fields/PasswordBox");
 	}
+
+	public void GoToMain()
+	{
+		GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
+	}
+
+	public void GoToRegister()
+	{
+		GetTree().ChangeSceneToFile("res://Scenes/RegisterScene.tscn");
+	}
+
 	public void CheckLogIn()
 	{
 		string[] headers = ["Content-Type: application/json"];

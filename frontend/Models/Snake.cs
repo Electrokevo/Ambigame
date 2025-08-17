@@ -23,7 +23,7 @@ public partial class Snake : Node2D
 	public override void _Ready()
 	{
 		_snakeBodySize = 40;
-		_gameSize = new Vector2I(15, 8);
+		_gameSize = new Vector2I(25, 16);
 
 		_snakeBody = GetNode<SnakeBody>("SnakeBody");
 		_snakeBody.Position = new Vector2(0, 0);

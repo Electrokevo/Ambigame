@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceh52rhn778hx"]
+
+[ext_resource type="Script" uid="uid://bxy2phsxfq24f" path="res://Scenes/MainScene.cs" id="1_nhkr4"]
+[ext_resource type="LabelSettings" uid="uid://c27xfl56525tk" path="res://titles.tres" id="2_7rqgy"]
+[ext_resource type="Texture2D" uid="uid://cqk20arl22bsn" path="res://icon.png" id="3_qxria"]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+script = ExtResource("1_nhkr4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ambigame"
+label_settings = ExtResource("2_7rqgy")
+
+[node name="Fields" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer/Fields"]
+layout_mode = 2
+text = "Jugar"
+
+[node name="RankingButton" type="Button" parent="HBoxContainer/VBoxContainer/Fields"]
+layout_mode = 2
+text = "Ranking"
+
+[node name="HistorialButton" type="Button" parent="HBoxContainer/VBoxContainer/Fields"]
+layout_mode = 2
+text = "Historial"
+
+[node name="TutorialButton" type="Button" parent="HBoxContainer/VBoxContainer/Fields"]
+layout_mode = 2
+text = "Tutorial"
+
+[node name="LogOutButton" type="Button" parent="HBoxContainer/VBoxContainer/Fields"]
+layout_mode = 2
+text = "Cerrar Sesion"
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "User: <Placeholder>"
+label_settings = ExtResource("2_7rqgy")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_qxria")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/PlayButton" to="." method="Play"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/RankingButton" to="." method="GoToRanking"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/HistorialButton" to="." method="GoToHistorial"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/TutorialButton" to="." method="GoToTutorial"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/LogOutButton" to="." method="LogOut"]

@@ -57,7 +57,7 @@ public partial class SnakeBody : Sprite2D
 	public override void _Process(double delta)
 	{
 		_time += delta;
-		if (_time > 0.5)
+		if (_time > 0.2)
 		{
 			var translation = _direction switch
 			{
