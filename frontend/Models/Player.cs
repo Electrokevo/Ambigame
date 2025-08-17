@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 namespace Snakes.Models;
 internal class Player
 {
-    public string Name { get; set; }
-    public string Password { get; set; }
-    public Player(string name, string password)
+    public string username { get; set; }
+    public string password { get; set; }
+    public Player(string _username, string _password)
     {
-        Name = name;
-        Password = password; // Start position
+        username = _username;
+        password = _password; // Start position
     }
 }

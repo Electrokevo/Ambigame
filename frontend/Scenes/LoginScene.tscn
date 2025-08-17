@@ -82,6 +82,6 @@ texture = ExtResource("3_7bcn3")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/LoginButton" to="." method="CheckLogIn"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/LoginButton" to="." method="LogIn"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/Button" to="." method="GoToMain"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/HBoxContainer/LinkButton" to="." method="GoToRegister"]

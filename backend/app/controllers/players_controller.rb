@@ -13,8 +13,8 @@ class PlayersController < ApplicationController
   end
 
   def login
-    player = Player.find_by(username: params[:player][:username])
-    if player && player.authenticate(params[:player][:password])
+    player = Player.find_by(username: params[:username])
+    if player && player.authenticate(params[:password])
       render json: { message: "Login successful", player: player }
     else
       render json: { error: "Invalid credentials", param: params }, status: :unauthorized
@@ -22,7 +22,7 @@ class PlayersController < ApplicationController
   end
 
   def register
-    player = Player.new(player_params)
+    player = Player.new(username: params[:username], password: params[:password])
     if player.save
       render json: { message: "Registration successful", player: player }
     else
@@ -47,7 +47,7 @@ class PlayersController < ApplicationController
 
   def ranking
     @player = Player.find(params[:id])  # Obtener el jugador por su ID
-    
+
     # Calcular el puntaje total del jugador
     total_score = @player.matches.sum(:score)
 
@@ -55,23 +55,23 @@ class PlayersController < ApplicationController
     player_matches = @player.matches.select(:id, :score, :created_at, :updated_at, :level, :time, :points, :recolected)
 
     # Obtener el ranking global de los 5 mejores jugadores, incluyendo al jugador actual
-    @ranking = Player.joins('LEFT JOIN matches ON matches.player_id = players.id')
-                     .select('players.id, players.username, COALESCE(SUM(matches.score), 0) AS total_score')
-                     .group('players.id')
-                     .order('total_score DESC')
+    @ranking = Player.joins("LEFT JOIN matches ON matches.player_id = players.id")
+                     .select("players.id, players.username, COALESCE(SUM(matches.score), 0) AS total_score")
+                     .group("players.id")
+                     .order("total_score DESC")
                      .limit(5)
 
     # Devolvemos el JSON con el jugador, su puntaje y los matches
-    render json: { 
-      player: { 
-        id: @player.id, 
+    render json: {
+      player: {
+        id: @player.id,
         username: @player.username,
-        total_score: total_score 
+        total_score: total_score
       },
       ranking: {
-        player_matches: player_matches.map { |match| 
-          { 
-            id: match.id, 
+        player_matches: player_matches.map { |match|
+          {
+            id: match.id,
             score: match.score,
             created_at: match.created_at,
             updated_at: match.updated_at,
@@ -79,14 +79,14 @@ class PlayersController < ApplicationController
             time: match.time,
             points: match.points,
             recolected: match.recolected
-          } 
+          }
         },
-        global_ranking: @ranking.map { |player| 
-          { 
-            id: player.id, 
-            username: player.username, 
+        global_ranking: @ranking.map { |player|
+          {
+            id: player.id,
+            username: player.username,
             total_score: player.total_score
-          } 
+          }
         }
       }
     }
@@ -100,6 +100,6 @@ class PlayersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def player_params
-      params.expect(player: [ :username, :password, :password_confirmation ])
+      params.expect(:username, :password, :password_confirmation)
     end
 end
