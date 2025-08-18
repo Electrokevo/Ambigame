@@ -22,23 +22,229 @@ alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Header" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Ambigame"
 label_settings = ExtResource("1_fh5er")
+horizontal_alignment = 1
 
-[node name="Matches" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="Info" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Tittle" type="Label" parent="HBoxContainer/VBoxContainer/Info"]
+layout_mode = 2
+text = "Partidas Recientes"
+label_settings = ExtResource("1_fh5er")
+
+[node name="Desc" type="Label" parent="HBoxContainer/VBoxContainer/Info"]
+layout_mode = 2
+text = "Revisa tu progreso ecológico"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="MatchesFirst" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Matches"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst"]
 layout_mode = 2
-text = "Jueguitos"
+
+[node name="DataRow" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "15/08/2025"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nivel 2"
+horizontal_alignment = 2
+
+[node name="DataRow2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Puntuación:"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "3120"
+horizontal_alignment = 2
+
+[node name="DataRow3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reciclados:"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "25"
+horizontal_alignment = 2
+
+[node name="DataRow4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tiempo:"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "01:32"
+horizontal_alignment = 2
+
+[node name="MatchesSecond" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond"]
+layout_mode = 2
+
+[node name="DataRow" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "16/08/2025"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Nivel 1"
+horizontal_alignment = 2
+
+[node name="DataRow2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Puntuación:"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1450"
+horizontal_alignment = 2
+
+[node name="DataRow3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reciclados:"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "10"
+horizontal_alignment = 2
+
+[node name="DataRow4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tiempo:"
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "00:52"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Tittle" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Estadísticas Generales"
+label_settings = ExtResource("1_fh5er")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Data" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "2"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Partidas"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Data" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "3120"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Mejor Puntuación"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Data" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "01:32"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Mejor Tiempo"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Data" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "2"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Nivel Máximo"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
