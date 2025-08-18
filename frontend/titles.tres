@@ -1,33 +1,8 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c27xfl56525tk"]
 
-[sub_resource type="FontFile" id="FontFile_5x1qb"]
-cache/0/28/0/ascent = 0.0
-cache/0/28/0/descent = 0.0
-cache/0/28/0/underline_position = 0.0
-cache/0/28/0/underline_thickness = 0.0
-cache/0/28/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/27/0/ascent = 0.0
-cache/0/27/0/descent = 0.0
-cache/0/27/0/underline_position = 0.0
-cache/0/27/0/underline_thickness = 0.0
-cache/0/27/0/scale = 1.0
-cache/0/26/0/ascent = 0.0
-cache/0/26/0/descent = 0.0
-cache/0/26/0/underline_position = 0.0
-cache/0/26/0/underline_thickness = 0.0
-cache/0/26/0/scale = 1.0
-cache/0/25/0/ascent = 0.0
-cache/0/25/0/descent = 0.0
-cache/0/25/0/underline_position = 0.0
-cache/0/25/0/underline_thickness = 0.0
-cache/0/25/0/scale = 1.0
+[ext_resource type="FontFile" uid="uid://b8pw4657i3t6i" path="res://Fonts/junigarden_swash/JunigardenSwash_PERSONAL_USE_ONLY.otf" id="1_32vwr"]
 
 [resource]
-font = SubResource("FontFile_5x1qb")
-font_size = 25
+font = ExtResource("1_32vwr")
+font_size = 64
 font_color = Color(0.160784, 1, 0.321569, 1)

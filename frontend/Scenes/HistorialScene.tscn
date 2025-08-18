@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://oln3mkncm3q5"]
+[gd_scene load_steps=4 format=3 uid="uid://oln3mkncm3q5"]
 
 [ext_resource type="LabelSettings" uid="uid://c27xfl56525tk" path="res://titles.tres" id="1_fh5er"]
 [ext_resource type="Script" uid="uid://d2aqpckrrjp2" path="res://Scenes/HistorialScene.cs" id="1_y7s0k"]
+[ext_resource type="LabelSettings" uid="uid://tjelqaktb831" path="res://text.tres" id="3_0vcxl"]
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="MarginContainer2" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -38,7 +39,7 @@ layout_mode = 2
 [node name="Tittle" type="Label" parent="HBoxContainer/VBoxContainer/Info"]
 layout_mode = 2
 text = "Partidas Recientes"
-label_settings = ExtResource("1_fh5er")
+label_settings = ExtResource("3_0vcxl")
 
 [node name="Desc" type="Label" parent="HBoxContainer/VBoxContainer/Info"]
 layout_mode = 2
@@ -185,7 +186,7 @@ theme_override_constants/separation = 20
 [node name="Tittle" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Estadísticas Generales"
-label_settings = ExtResource("1_fh5er")
+label_settings = ExtResource("3_0vcxl")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
