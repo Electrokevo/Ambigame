@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceh52rhn778hx"]
+[gd_scene load_steps=5 format=3 uid="uid://ceh52rhn778hx"]
 
 [ext_resource type="Script" uid="uid://bxy2phsxfq24f" path="res://Scenes/MainScene.cs" id="1_nhkr4"]
 [ext_resource type="LabelSettings" uid="uid://c27xfl56525tk" path="res://titles.tres" id="2_7rqgy"]
+[ext_resource type="LabelSettings" uid="uid://tjelqaktb831" path="res://text.tres" id="3_7rqgy"]
 [ext_resource type="Texture2D" uid="uid://cqk20arl22bsn" path="res://icon.png" id="3_qxria"]
 
 [node name="MarginContainer" type="MarginContainer"]
@@ -59,7 +60,7 @@ text = "Cerrar Sesion"
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "User: <Placeholder>"
-label_settings = ExtResource("2_7rqgy")
+label_settings = ExtResource("3_7rqgy")
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
 layout_mode = 2
