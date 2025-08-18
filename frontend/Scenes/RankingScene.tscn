@@ -1,12 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://4ywjkjlsx3dh"]
+[gd_scene load_steps=5 format=3 uid="uid://4ywjkjlsx3dh"]
 
 [ext_resource type="Script" uid="uid://n00l4yknquv4" path="res://Scenes/RankingScene.cs" id="1_pnxd0"]
 [ext_resource type="LabelSettings" uid="uid://c27xfl56525tk" path="res://titles.tres" id="2_adx7x"]
+[ext_resource type="Texture2D" uid="uid://cqk20arl22bsn" path="res://icon.png" id="3_adx7x"]
+[ext_resource type="LabelSettings" uid="uid://co3afyh2717yj" path="res://RankingNumber.tres" id="3_vrm53"]
 
 [node name="MarginContainer" type="MarginContainer"]
+clip_contents = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -80.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 120
@@ -17,28 +22,172 @@ script = ExtResource("1_pnxd0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Header" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Ambigame"
 label_settings = ExtResource("2_adx7x")
+horizontal_alignment = 1
 
-[node name="Rankings" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Info" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/Rankings"]
+[node name="Tittle" type="Label" parent="VBoxContainer/Info"]
 layout_mode = 2
-text = "Hola"
+text = "Mejores Puntuaciones"
+label_settings = ExtResource("2_adx7x")
+
+[node name="Desc" type="Label" parent="VBoxContainer/Info"]
+layout_mode = 2
+text = "Los top globales"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "#1"
+label_settings = ExtResource("3_vrm53")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_adx7x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="DataRow" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Levin"
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5000"
+horizontal_alignment = 2
+
+[node name="DataRow2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "18/07/2025"
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Puntos"
+horizontal_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "#2"
+label_settings = ExtResource("3_vrm53")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("3_adx7x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="DataRow" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/DataRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kevo"
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/DataRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "4000"
+horizontal_alignment = 2
+
+[node name="DataRow2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/DataRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "18/07/2025"
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/DataRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Puntos"
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "#3"
+label_settings = ExtResource("3_vrm53")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("3_adx7x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="DataRow" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/DataRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LevKevo"
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/DataRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "2050"
+horizontal_alignment = 2
+
+[node name="DataRow2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/DataRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "18/07/2025"
+
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/DataRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Puntos"
+horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Volver"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
-
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="Volver"]
