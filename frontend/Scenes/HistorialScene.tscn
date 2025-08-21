@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://oln3mkncm3q5"]
+[gd_scene load_steps=6 format=3 uid="uid://oln3mkncm3q5"]
 
 [ext_resource type="LabelSettings" uid="uid://c27xfl56525tk" path="res://titles.tres" id="1_fh5er"]
 [ext_resource type="Script" uid="uid://d2aqpckrrjp2" path="res://Scenes/HistorialScene.cs" id="1_y7s0k"]
 [ext_resource type="LabelSettings" uid="uid://tjelqaktb831" path="res://text.tres" id="3_0vcxl"]
+[ext_resource type="LabelSettings" uid="uid://cojx1ha5j7772" path="res://blackText.tres" id="4_1gk75"]
+[ext_resource type="Theme" uid="uid://bm5evw0t3glgv" path="res://Theme.tres" id="5_l8lt0"]
 
 [node name="MarginContainer2" type="MarginContainer"]
 anchors_preset = 15
@@ -44,6 +46,7 @@ label_settings = ExtResource("3_0vcxl")
 [node name="Desc" type="Label" parent="HBoxContainer/VBoxContainer/Info"]
 layout_mode = 2
 text = "Revisa tu progreso ecológico"
+label_settings = ExtResource("4_1gk75")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -65,11 +68,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "15/08/2025"
+label_settings = ExtResource("4_1gk75")
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Nivel 2"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 2
 
 [node name="DataRow2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer"]
@@ -79,11 +84,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Puntuación:"
+label_settings = ExtResource("4_1gk75")
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "3120"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 2
 
 [node name="DataRow3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer"]
@@ -93,11 +100,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Reciclados:"
+label_settings = ExtResource("4_1gk75")
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow3"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "25"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 2
 
 [node name="DataRow4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer"]
@@ -107,11 +116,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Tiempo:"
+label_settings = ExtResource("4_1gk75")
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesFirst/VBoxContainer/DataRow4"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "01:32"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 2
 
 [node name="MatchesSecond" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
@@ -130,11 +141,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "16/08/2025"
+label_settings = ExtResource("4_1gk75")
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Nivel 1"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 2
 
 [node name="DataRow2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer"]
@@ -144,11 +157,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Puntuación:"
+label_settings = ExtResource("4_1gk75")
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "1450"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 2
 
 [node name="DataRow3" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer"]
@@ -158,11 +173,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Reciclados:"
+label_settings = ExtResource("4_1gk75")
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow3"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "10"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 2
 
 [node name="DataRow4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer"]
@@ -172,11 +189,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Tiempo:"
+label_settings = ExtResource("4_1gk75")
 
 [node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer/MatchesSecond/VBoxContainer/DataRow4"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "00:52"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
@@ -198,11 +217,13 @@ size_flags_horizontal = 3
 [node name="Data" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "2"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Partidas"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
@@ -212,11 +233,13 @@ size_flags_horizontal = 3
 [node name="Data" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "3120"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "Mejor Puntuación"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
@@ -226,11 +249,13 @@ size_flags_horizontal = 3
 [node name="Data" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 text = "01:32"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 layout_mode = 2
 text = "Mejor Tiempo"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 1
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
@@ -240,15 +265,18 @@ size_flags_horizontal = 3
 [node name="Data" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
 layout_mode = 2
 text = "2"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer4"]
 layout_mode = 2
 text = "Nivel Máximo"
+label_settings = ExtResource("4_1gk75")
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_l8lt0")
 text = "Volver"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]

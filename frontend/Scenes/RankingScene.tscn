@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://4ywjkjlsx3dh"]
+[gd_scene load_steps=8 format=3 uid="uid://4ywjkjlsx3dh"]
 
 [ext_resource type="Script" uid="uid://n00l4yknquv4" path="res://Scenes/RankingScene.cs" id="1_pnxd0"]
 [ext_resource type="LabelSettings" uid="uid://c27xfl56525tk" path="res://titles.tres" id="2_adx7x"]
 [ext_resource type="Texture2D" uid="uid://cqk20arl22bsn" path="res://icon.png" id="3_adx7x"]
 [ext_resource type="LabelSettings" uid="uid://tjelqaktb831" path="res://text.tres" id="3_l21kk"]
 [ext_resource type="LabelSettings" uid="uid://co3afyh2717yj" path="res://RankingNumber.tres" id="3_vrm53"]
+[ext_resource type="LabelSettings" uid="uid://cojx1ha5j7772" path="res://blackText.tres" id="6_6q0l8"]
+[ext_resource type="Theme" uid="uid://bm5evw0t3glgv" path="res://Theme.tres" id="6_sepj8"]
 
 [node name="MarginContainer2" type="MarginContainer"]
 clip_contents = true
@@ -44,6 +46,7 @@ label_settings = ExtResource("3_l21kk")
 [node name="Desc" type="Label" parent="VBoxContainer/Info"]
 layout_mode = 2
 text = "Los top globales"
+label_settings = ExtResource("3_l21kk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -74,11 +77,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Levin"
+label_settings = ExtResource("6_6q0l8")
 
 [node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "5000"
+label_settings = ExtResource("6_6q0l8")
 horizontal_alignment = 2
 
 [node name="DataRow2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -88,11 +93,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "18/07/2025"
+label_settings = ExtResource("6_6q0l8")
 
 [node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/DataRow2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Puntos"
+label_settings = ExtResource("6_6q0l8")
 horizontal_alignment = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
@@ -120,11 +127,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Kevo"
+label_settings = ExtResource("6_6q0l8")
 
 [node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/DataRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "4000"
+label_settings = ExtResource("6_6q0l8")
 horizontal_alignment = 2
 
 [node name="DataRow2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
@@ -134,11 +143,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "18/07/2025"
+label_settings = ExtResource("6_6q0l8")
 
 [node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/DataRow2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Puntos"
+label_settings = ExtResource("6_6q0l8")
 horizontal_alignment = 2
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
@@ -166,11 +177,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "LevKevo"
+label_settings = ExtResource("6_6q0l8")
 
 [node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/DataRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "2050"
+label_settings = ExtResource("6_6q0l8")
 horizontal_alignment = 2
 
 [node name="DataRow2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer"]
@@ -180,15 +193,18 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 text = "18/07/2025"
+label_settings = ExtResource("6_6q0l8")
 
 [node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer3/VBoxContainer/DataRow2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Puntos"
+label_settings = ExtResource("6_6q0l8")
 horizontal_alignment = 2
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("6_sepj8")
 text = "Volver"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]

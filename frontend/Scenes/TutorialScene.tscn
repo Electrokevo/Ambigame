@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://qhkvpcr6otha"]
+[gd_scene load_steps=6 format=3 uid="uid://qhkvpcr6otha"]
 
 [ext_resource type="Script" uid="uid://dshgxck0f45rs" path="res://Scenes/TutorialScene.cs" id="1_74byh"]
 [ext_resource type="LabelSettings" uid="uid://c27xfl56525tk" path="res://titles.tres" id="1_tt6wg"]
+[ext_resource type="LabelSettings" uid="uid://tjelqaktb831" path="res://text.tres" id="3_ch2se"]
+[ext_resource type="Theme" uid="uid://bm5evw0t3glgv" path="res://Theme.tres" id="4_jbvax"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_74byh"]
 
@@ -33,12 +35,14 @@ layout_mode = 2
 
 [node name="Tittle" type="Label" parent="VBoxContainer/Info"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 11
 text = "Tutorial"
-label_settings = ExtResource("1_tt6wg")
+label_settings = ExtResource("3_ch2se")
 
 [node name="Desc" type="Label" parent="VBoxContainer/Info"]
 layout_mode = 2
 text = "La guía para salvar al mundo"
+label_settings = ExtResource("3_ch2se")
 
 [node name="Data" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -48,6 +52,18 @@ alignment = 1
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer/Data"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/current_line_color = Color(0, 0, 0, 1)
+theme_override_colors/background_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_readonly_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0.879899, 1, 0.879148, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_background_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/search_result_border_color = Color(0, 0, 0, 1)
+theme_override_colors/search_result_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_74byh")
 text = "Controla a tu personaje: Mueves a tu héroe ecológico con las flechas direccionales o las teclas WASD para recolectar residuos esparcidos por el terreno. El objetivo es usar el palo para recoger la basura del entorno.
 
@@ -58,10 +74,12 @@ Evita chocar: Ten cuidado de no chocar con tu propia bolsa de basura, ya que est
 Recoge residuos especiales: Algunos residuos son especiales, que te otorgarán puntos extra y te ayudarán a avanzar más rápido. Los residuos especiales también aumentan la dificultad.
 
 Juega sin límite de tiempo: No hay un tiempo límite para recolectar basura. El objetivo es lograr la mayor puntuación posible mientras continúas recolectando residuos y evitando dañar tu bolsa de basura. ¡Recoge todo lo que puedas y ayuda al planeta!"
+editable = false
 wrap_mode = 1
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_jbvax")
 text = "Volver"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]

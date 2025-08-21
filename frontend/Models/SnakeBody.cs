@@ -71,12 +71,12 @@ public partial class SnakeBody : Sprite2D
 				var newRect = new Rect2(_body.First.Value.Position, _body.First.Value.Size);
 				newRect.Position += translation;
 				if (newRect.Position.X < 0)
-					newRect.Position = new Vector2(600, newRect.Position.Y);
-				if (newRect.Position.X > 600)
+					newRect.Position = new Vector2(1080, newRect.Position.Y);
+				if (newRect.Position.X > 1080)
 					newRect.Position = new Vector2(0, newRect.Position.Y);
 				if (newRect.Position.Y < 0)
-					newRect.Position = new Vector2(newRect.Position.X, 320);
-				if (newRect.Position.Y > 320)
+					newRect.Position = new Vector2(newRect.Position.X, 720);
+				if (newRect.Position.Y > 720)
 					newRect.Position = new Vector2(newRect.Position.X, 0);
 
 				_body.AddFirst(newRect);

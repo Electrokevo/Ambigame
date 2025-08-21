@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://db6cpih6erwgv"]
+[gd_scene load_steps=6 format=3 uid="uid://db6cpih6erwgv"]
 
 [ext_resource type="Script" uid="uid://perhjm5p80fp" path="res://Scenes/LoginScene.cs" id="1_p25gn"]
 [ext_resource type="LabelSettings" uid="uid://c27xfl56525tk" path="res://titles.tres" id="2_76d8l"]
 [ext_resource type="Texture2D" uid="uid://cqk20arl22bsn" path="res://icon.png" id="3_7bcn3"]
 [ext_resource type="LabelSettings" uid="uid://tjelqaktb831" path="res://text.tres" id="3_76d8l"]
+[ext_resource type="Theme" uid="uid://bm5evw0t3glgv" path="res://Theme.tres" id="4_7bcn3"]
 
 [node name="MarginContainer2" type="MarginContainer"]
 anchors_preset = 15
@@ -27,50 +28,65 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
-clip_contents = true
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
 text = "Ambigame"
 label_settings = ExtResource("2_76d8l")
+
+[node name="Title2" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "!Salva el planeta, gana puntos!"
+label_settings = ExtResource("3_76d8l")
 
 [node name="Fields" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="UsernameBox" type="TextEdit" parent="HBoxContainer/VBoxContainer/Fields"]
+[node name="UsernameBox" type="LineEdit" parent="HBoxContainer/VBoxContainer/Fields"]
 layout_mode = 2
+theme = ExtResource("4_7bcn3")
 placeholder_text = "Usuario"
-scroll_fit_content_height = true
-scroll_fit_content_width = true
 
-[node name="PasswordBox" type="TextEdit" parent="HBoxContainer/VBoxContainer/Fields"]
+[node name="PasswordBox" type="LineEdit" parent="HBoxContainer/VBoxContainer/Fields"]
 layout_mode = 2
+theme = ExtResource("4_7bcn3")
 placeholder_text = "Contraseña"
-scroll_fit_content_height = true
-scroll_fit_content_width = true
 
 [node name="LoginButton" type="Button" parent="HBoxContainer/VBoxContainer/Fields"]
 layout_mode = 2
+theme = ExtResource("4_7bcn3")
 text = "Ingresar"
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/Fields"]
 layout_mode = 2
+theme = ExtResource("4_7bcn3")
 text = "Bypass"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Fields"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/Fields"]
 layout_mode = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Fields/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Fields/VBoxContainer"]
 layout_mode = 2
-text = "No tienes cuenta?"
+size_flags_vertical = 6
+text = "¿Nuevo en la lucha ecologica?"
+label_settings = ExtResource("3_76d8l")
 
-[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer/Fields/HBoxContainer"]
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer/Fields/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("4_7bcn3")
 text = "Registrate aqui"
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_type_variation = &"HeaderMedium"
 text = "Creado por: 
 Kevin Mejia y Levin Moran"
 label_settings = ExtResource("3_76d8l")
@@ -86,4 +102,4 @@ texture = ExtResource("3_7bcn3")
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/LoginButton" to="." method="LogIn"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/Button" to="." method="GoToMain"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/HBoxContainer/LinkButton" to="." method="GoToRegister"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Fields/VBoxContainer/LinkButton" to="." method="GoToRegister"]

@@ -23,7 +23,7 @@ public partial class Snake : Node2D
 	public override void _Ready()
 	{
 		_snakeBodySize = 40;
-		_gameSize = new Vector2I(25, 16);
+		_gameSize = new Vector2I(30, 20);
 
 		_snakeBody = GetNode<SnakeBody>("SnakeBody");
 		_snakeBody.Position = new Vector2(0, 0);
@@ -34,7 +34,7 @@ public partial class Snake : Node2D
 			rnd.Next(_gameSize.Y) * _snakeBodySize
 		);
 
-		timer = new Timer(10000);
+		timer = new Timer(4000);
 		timer.Elapsed += NewApple;
 		timer.AutoReset = true;
 		timer.Start();
