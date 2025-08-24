@@ -6,7 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://cojx1ha5j7772" path="res://blackText.tres" id="4_1gk75"]
 [ext_resource type="Theme" uid="uid://bm5evw0t3glgv" path="res://Theme.tres" id="5_l8lt0"]
 
-[node name="MarginContainer2" type="MarginContainer"]
+[node name="MarginContainer3" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
