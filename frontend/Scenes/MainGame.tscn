@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bb84vf8i5scbq"]
+[gd_scene load_steps=15 format=4 uid="uid://bb84vf8i5scbq"]
 
 [ext_resource type="TileSet" uid="uid://ydwe2v6t82bg" path="res://Assets/DemoTileSet.tres" id="1_0ynk6"]
 [ext_resource type="Script" uid="uid://bcb66jlp1gqdj" path="res://Models/Snake.cs" id="1_ylpyt"]
@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://83u81ntvymi0" path="res://Assets/Plant.png" id="4_kvfik"]
 [ext_resource type="Shader" uid="uid://dmw8ht36lmm8h" path="res://Shaders/GridShader.tres" id="6_atlul"]
 [ext_resource type="Texture2D" uid="uid://d00ou7t5q3kk1" path="res://Assets/Blank.png" id="6_e78ew"]
+[ext_resource type="Theme" uid="uid://bm5evw0t3glgv" path="res://Theme.tres" id="8_48eim"]
+[ext_resource type="LabelSettings" uid="uid://c27xfl56525tk" path="res://titles.tres" id="9_73a8k"]
+[ext_resource type="LabelSettings" uid="uid://tjelqaktb831" path="res://text.tres" id="10_q8sds"]
 [ext_resource type="Script" uid="uid://csiqjwr0dfdt8" path="res://Models/SnakeBody.cs" id="13_wyocf"]
-[ext_resource type="Script" uid="uid://bme8v4lf3mehw" path="res://Models/Apple.cs" id="14_ktwve"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3bmkb"]
 texture = ExtResource("4_kvfik")
@@ -64,23 +66,25 @@ texture = ExtResource("6_e78ew")
 
 [node name="Snake" type="Node2D" parent="."]
 
-[node name="SnakeBody" type="Sprite2D" parent="Snake" node_paths=PackedStringArray("DualGrid", "puntiacionLabel", "recicladosLabel", "timerLabel")]
+[node name="SnakeBody" type="Sprite2D" parent="Snake" node_paths=PackedStringArray("DualGrid", "puntiacionLabel", "recicladosLabel", "timerLabel", "statsLabel", "gameOverScreen")]
 script = ExtResource("13_wyocf")
 DualGrid = NodePath("../../TileMapLayers")
 puntiacionLabel = NodePath("../../CanvasLayer/VBoxContainer/Puntuacion")
 recicladosLabel = NodePath("../../CanvasLayer/VBoxContainer/Reciclados")
 timerLabel = NodePath("../../CanvasLayer/VBoxContainer/Tiempo")
-
-[node name="Apple" type="Sprite2D" parent="Snake"]
-visible = false
-texture = ExtResource("4_kvfik")
-script = ExtResource("14_ktwve")
+statsLabel = NodePath("../../GameOverScreen/VBoxContainer/Stats")
+gameOverScreen = NodePath("../../GameOverScreen")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+follow_viewport_enabled = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 68.0
+grow_horizontal = 2
 
 [node name="Puntuacion" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
@@ -89,6 +93,7 @@ label_settings = SubResource("LabelSettings_kvfik")
 
 [node name="Reciclados" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
 text = "Reciclados: 0"
 label_settings = SubResource("LabelSettings_kvfik")
 
@@ -96,3 +101,46 @@ label_settings = SubResource("LabelSettings_kvfik")
 layout_mode = 2
 text = "Tiempo: 0"
 label_settings = SubResource("LabelSettings_kvfik")
+
+[node name="GameOverScreen" type="CanvasLayer" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+follow_viewport_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_48eim")
+alignment = 1
+
+[node name="GameoverLabel" type="Label" parent="GameOverScreen/VBoxContainer"]
+layout_mode = 2
+text = "GameOver"
+label_settings = ExtResource("9_73a8k")
+
+[node name="Stats" type="Label" parent="GameOverScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Placeholder for stats"
+label_settings = ExtResource("10_q8sds")
+
+[node name="Again" type="Button" parent="GameOverScreen/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_48eim")
+text = "Volver a jugar"
+
+[node name="Salir" type="Button" parent="GameOverScreen/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("8_48eim")
+text = "Salir"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="GameOverScreen/VBoxContainer/Again" to="." method="OnAgainPressed"]
+[connection signal="pressed" from="GameOverScreen/VBoxContainer/Salir" to="." method="OnSalirPressed"]

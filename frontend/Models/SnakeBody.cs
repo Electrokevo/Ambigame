@@ -1,4 +1,5 @@
 using Godot;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,6 +13,9 @@ public partial class SnakeBody : Sprite2D
 	[Export] Label puntiacionLabel;
 	[Export] Label recicladosLabel;
 	[Export] Label timerLabel;
+
+	[Export] Label statsLabel;
+	[Export] CanvasLayer gameOverScreen;
 
 	private LinkedList<Vector2I> _body;
 	private bool _crash;
@@ -68,6 +72,7 @@ public partial class SnakeBody : Sprite2D
 		_direction = Direction.RIGHT;
 		_body = new([new(1, 0), new(0, 0)]);
 		ZIndex = 1;
+		gameOverScreen.Visible = false;
 	}
 
 	public override void _Draw()
@@ -149,6 +154,9 @@ public partial class SnakeBody : Sprite2D
 				{
 					GD.Print("CRASH! Game Over");
 					_crash = true;
+					gameOverScreen.Visible = true;
+					statsLabel.Text = $"Puntuacion: {Puntuacion}\nReciclados: {Reciclados}\nTiempo: {juegoTime} segundos";
+					SendMatchToBackend();
 					EmitSignal(SignalName.GameOver);
 				}
 			}
@@ -158,7 +166,13 @@ public partial class SnakeBody : Sprite2D
 		}
 	}
 
-	public override void _Input(InputEvent @event)
+    private void SendMatchToBackend()
+    {
+        // user HTTP request to send the match data to the backend
+        throw new NotImplementedException();
+    }
+
+    public override void _Input(InputEvent @event)
 	{
 		if (@event.IsAction("ui_left") && _direction != Direction.RIGHT)
 		{

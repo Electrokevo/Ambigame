@@ -44,4 +44,14 @@ public partial class Snake : Node2D
 	{
 		DualGrid.AddTrash(new Vector2I(rnd.Next(0, 32), rnd.Next(0, 21)));
 	}
+
+	public void OnAgainPressed()
+	{
+		GetTree().ReloadCurrentScene();
+	}
+
+	public void OnSalirPressed()
+	{
+		GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
+	}
 }

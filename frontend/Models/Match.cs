@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Snakes.Models;
-internal class Match
+public class Match
 {
+    
 }
