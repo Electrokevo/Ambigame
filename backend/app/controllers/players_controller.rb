@@ -51,6 +51,11 @@ class PlayersController < ApplicationController
     # Calcular el puntaje total del jugador
     total_score = @player.matches.sum(:score)
 
+    # Obtener el mejor puntaje y la fecha de ese match
+    best_match = @player.matches.order(score: :desc).first
+    best_score = best_match&.score || 0
+    best_score_date = best_match&.created_at
+
     # Obtener los partidos (matches) del jugador
     player_matches = @player.matches.select(:id, :score, :created_at, :updated_at, :level, :time, :points, :recolected)
 
@@ -66,7 +71,9 @@ class PlayersController < ApplicationController
       player: {
         id: @player.id,
         username: @player.username,
-        total_score: total_score
+        total_score: total_score,
+        best_score: best_score,
+        best_score_date: best_score_date
       },
       ranking: {
         player_matches: player_matches.map { |match|
