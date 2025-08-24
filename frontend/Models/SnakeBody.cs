@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Newtonsoft.Json;
+using Snakes.Models;
 
 namespace Snake;
 
@@ -16,6 +18,8 @@ public partial class SnakeBody : Sprite2D
 
 	[Export] Label statsLabel;
 	[Export] CanvasLayer gameOverScreen;
+	[Export] HttpRequest httpRequest;
+	private string url = "http://localhost:3000/";
 
 	private LinkedList<Vector2I> _body;
 	private bool _crash;
@@ -120,7 +124,6 @@ public partial class SnakeBody : Sprite2D
 		}
 		if (_time > 0.2 && !_crash)
 		{
-
 			var translation = _direction switch
 			{
 				Direction.RIGHT => new Vector2I(1, 0),
@@ -149,10 +152,8 @@ public partial class SnakeBody : Sprite2D
 					_body.RemoveLast();
 					DualGrid.SetTile(last, DualGrid.dirtPlaceholderAtlasCoord);
 				}
-
 				if (Crash())
 				{
-					GD.Print("CRASH! Game Over");
 					_crash = true;
 					gameOverScreen.Visible = true;
 					statsLabel.Text = $"Puntuacion: {Puntuacion}\nReciclados: {Reciclados}\nTiempo: {juegoTime} segundos";
@@ -166,13 +167,37 @@ public partial class SnakeBody : Sprite2D
 		}
 	}
 
-    private void SendMatchToBackend()
-    {
-        // user HTTP request to send the match data to the backend
-        throw new NotImplementedException();
-    }
+	private void SendMatchToBackend()
+	{
+		string[] headers = ["Content-Type: application/json"];
+		httpRequest.RequestCompleted += OnRequestCompleted;
+		Match match = new ()
+		{
+			score = Puntuacion,
+			player_id = 1, //replace con user id
+			date = DateTime.Now.ToString("yyyy-MM-dd"),
+			level = 1,
+			time = (int)juegoTime,
+			recolected = reciclados,
+		};
+		string body = JsonConvert.SerializeObject(match);
+		GD.Print(body);
+		httpRequest.Request($"{url}matches", headers, HttpClient.Method.Post, body);
+	}
 
-    public override void _Input(InputEvent @event)
+	private void OnRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
+	{
+		if (responseCode == 200)
+		{
+			GD.Print($"Success, the request returned {responseCode}");
+		}
+		else
+		{
+			GD.Print($"Error, the request returned {responseCode}");
+		}
+	}
+
+	public override void _Input(InputEvent @event)
 	{
 		if (@event.IsAction("ui_left") && _direction != Direction.RIGHT)
 		{

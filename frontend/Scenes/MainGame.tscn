@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bb84vf8i5scbq"]
+[gd_scene load_steps=15 format=4 uid="uid://df17scc5wxpal"]
 
 [ext_resource type="TileSet" uid="uid://ydwe2v6t82bg" path="res://Assets/DemoTileSet.tres" id="1_0ynk6"]
 [ext_resource type="Script" uid="uid://bcb66jlp1gqdj" path="res://Models/Snake.cs" id="1_ylpyt"]
@@ -66,7 +66,7 @@ texture = ExtResource("6_e78ew")
 
 [node name="Snake" type="Node2D" parent="."]
 
-[node name="SnakeBody" type="Sprite2D" parent="Snake" node_paths=PackedStringArray("DualGrid", "puntiacionLabel", "recicladosLabel", "timerLabel", "statsLabel", "gameOverScreen")]
+[node name="SnakeBody" type="Sprite2D" parent="Snake" node_paths=PackedStringArray("DualGrid", "puntiacionLabel", "recicladosLabel", "timerLabel", "statsLabel", "gameOverScreen", "httpRequest")]
 script = ExtResource("13_wyocf")
 DualGrid = NodePath("../../TileMapLayers")
 puntiacionLabel = NodePath("../../CanvasLayer/VBoxContainer/Puntuacion")
@@ -74,6 +74,7 @@ recicladosLabel = NodePath("../../CanvasLayer/VBoxContainer/Reciclados")
 timerLabel = NodePath("../../CanvasLayer/VBoxContainer/Tiempo")
 statsLabel = NodePath("../../GameOverScreen/VBoxContainer/Stats")
 gameOverScreen = NodePath("../../GameOverScreen")
+httpRequest = NodePath("../../HTTPRequest")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(0.5, 0.5)

@@ -37,6 +37,7 @@ public partial class Snake : Node2D
 
 	public void OnGameOver()
 	{
+		GD.Print("Game Over");
 		timer.Stop();
 	}
 
