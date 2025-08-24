@@ -1,6 +1,6 @@
+using Godot;
 using System;
 using System.Timers;
-using Godot;
 using Timer = System.Timers.Timer;
 
 namespace Snake;
@@ -10,30 +10,17 @@ public partial class Snake : Node2D
 	// To generate random numbers.
 	private static readonly Random rnd = new();
 
+	[Export] DualGridTilemap DualGrid;
 	// Scenes
-	private Apple _apple;
 	private Vector2I _gameSize;
-	private SnakeBody _snakeBody;
-
-	private int _snakeBodySize;
+	[Export] private SnakeBody _snakeBody;
 
 	// We could use a Godot Timer too.
 	private Timer timer;
 
 	public override void _Ready()
 	{
-		_snakeBodySize = 40;
-		_gameSize = new Vector2I(34, 21);
-
-		_snakeBody = GetNode<SnakeBody>("SnakeBody");
-		_snakeBody.Position = new Vector2(0, 0);
-
-		_apple = GetNode("Apple") as Apple;
-		_apple.Position = new Vector2(
-			rnd.Next(_gameSize.X),
-			rnd.Next(_gameSize.Y)
-		);
-
+		_gameSize = new Vector2I(33, 21);
 		timer = new Timer(4000);
 		timer.Elapsed += NewApple;
 		timer.AutoReset = true;
@@ -46,29 +33,26 @@ public partial class Snake : Node2D
 
 	public override void _Process(double delta)
 	{
-		if (_apple is not null)
-			if (_snakeBody.TryEat(_apple))
-			{
-				RemoveChild(_apple);
-				_apple = null;
-			}
 	}
 
 	public void OnGameOver()
 	{
+		GD.Print("Game Over");
 		timer.Stop();
-		if (_apple is not null)
-			RemoveChild(_apple);
 	}
 
 	public void NewApple(object src, ElapsedEventArgs e)
 	{
-		if (_apple is not null)
-			RemoveChild(_apple);
-		_apple = new Apple { Position = new Vector2(rnd.Next(0, 15), rnd.Next(0, 8)) };
+		DualGrid.AddTrash(new Vector2I(rnd.Next(0, 32), rnd.Next(0, 21)));
+	}
 
-		// Using Call Deferred to align to main thread,
-		// please read function documentation
-		CallDeferred("add_child", _apple);
+	public void OnAgainPressed()
+	{
+		GetTree().ReloadCurrentScene();
+	}
+
+	public void OnSalirPressed()
+	{
+		GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
 	}
 }

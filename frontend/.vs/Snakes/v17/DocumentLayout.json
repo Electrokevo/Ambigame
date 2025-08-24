@@ -3,14 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|c:\\users\\usuario\\onedrive\\documentos\\projects\\.net\\ambigame\\frontend\\scripts\\dualgridtilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|solutionrelative:scripts\\dualgridtilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|c:\\users\\usuario\\onedrive\\documentos\\projects\\.net\\ambigame\\frontend\\models\\apple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|solutionrelative:models\\apple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|c:\\users\\usuario\\onedrive\\documentos\\projects\\.net\\ambigame\\frontend\\models\\snakebody.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|solutionrelative:models\\snakebody.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,12 +11,24 @@
       "RelativeMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|solutionrelative:models\\snake.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|c:\\users\\usuario\\onedrive\\documentos\\projects\\.net\\ambigame\\frontend\\scenes\\mainscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|solutionrelative:scenes\\mainscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|c:\\users\\usuario\\onedrive\\documentos\\projects\\.net\\ambigame\\frontend\\models\\apple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|solutionrelative:models\\apple.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|c:\\users\\usuario\\onedrive\\documentos\\projects\\.net\\ambigame\\frontend\\scripts\\cursorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|solutionrelative:scripts\\cursorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|c:\\users\\usuario\\onedrive\\documentos\\projects\\.net\\ambigame\\frontend\\scenes\\mainscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|solutionrelative:scenes\\mainscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|c:\\users\\usuario\\onedrive\\documentos\\projects\\.net\\ambigame\\frontend\\scripts\\dualgridtilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|solutionrelative:scripts\\dualgridtilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|c:\\users\\usuario\\onedrive\\documentos\\projects\\.net\\ambigame\\frontend\\models\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD31A227-C693-4F1B-841F-E8AAEEFF6BA8}|Snakes.csproj|solutionrelative:models\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,13 +46,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
+              "Title": "Match.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\Match.cs",
+              "RelativeDocumentMoniker": "Models\\Match.cs",
+              "ToolTip": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\Match.cs",
+              "RelativeToolTip": "Models\\Match.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T17:55:21.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MainScene.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Scenes\\MainScene.cs",
               "RelativeDocumentMoniker": "Scenes\\MainScene.cs",
               "ToolTip": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Scenes\\MainScene.cs",
               "RelativeToolTip": "Scenes\\MainScene.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-24T05:04:15.409Z",
               "EditorCaption": ""
@@ -68,13 +85,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "Apple.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\Apple.cs",
+              "RelativeDocumentMoniker": "Models\\Apple.cs",
+              "ToolTip": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\Apple.cs",
+              "RelativeToolTip": "Models\\Apple.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T04:21:10.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "DualGridTilemap.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Scripts\\DualGridTilemap.cs",
               "RelativeDocumentMoniker": "Scripts\\DualGridTilemap.cs",
               "ToolTip": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Scripts\\DualGridTilemap.cs",
               "RelativeToolTip": "Scripts\\DualGridTilemap.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAABLAAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAcwFYAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-24T04:15:50.985Z",
               "EditorCaption": ""
@@ -82,40 +112,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Apple.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\Apple.cs",
-              "RelativeDocumentMoniker": "Models\\Apple.cs",
-              "ToolTip": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\Apple.cs",
-              "RelativeToolTip": "Models\\Apple.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T04:21:10.108Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SnakeBody.cs",
-              "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\SnakeBody.cs",
-              "RelativeDocumentMoniker": "Models\\SnakeBody.cs",
-              "ToolTip": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\SnakeBody.cs",
-              "RelativeToolTip": "Models\\SnakeBody.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAcwGYAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-24T04:18:55.727Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Snake.cs",
               "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\Snake.cs",
               "RelativeDocumentMoniker": "Models\\Snake.cs",
               "ToolTip": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\Snake.cs",
               "RelativeToolTip": "Models\\Snake.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAA1wEAAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAgwDUAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-24T04:15:37.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SnakeBody.cs",
+              "DocumentMoniker": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\SnakeBody.cs",
+              "RelativeDocumentMoniker": "Models\\SnakeBody.cs",
+              "ToolTip": "C:\\Users\\Usuario\\OneDrive\\Documentos\\Projects\\.net\\Ambigame\\frontend\\Models\\SnakeBody.cs",
+              "RelativeToolTip": "Models\\SnakeBody.cs",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAkwKoAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-24T04:18:55.727Z",
               "EditorCaption": ""
             }
           ]

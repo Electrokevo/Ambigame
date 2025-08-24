@@ -1,51 +1,105 @@
+using Godot;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Godot;
+using Newtonsoft.Json;
+using Snakes.Models;
 
 namespace Snake;
 
 public partial class SnakeBody : Sprite2D
 {
-	[Signal]
-	public delegate void GameOverEventHandler();
-
+	[Signal] public delegate void GameOverEventHandler();
 	[Export] DualGridTilemap DualGrid;
+	[Export] Label puntiacionLabel;
+	[Export] Label recicladosLabel;
+	[Export] Label timerLabel;
+
+	[Export] Label statsLabel;
+	[Export] CanvasLayer gameOverScreen;
+	[Export] HttpRequest httpRequest;
+	private string url = "http://localhost:3000/";
 
 	private LinkedList<Vector2I> _body;
 	private bool _crash;
-
 	private Direction _direction;
-	private bool _eat;
-
 	private double _time;
+
+	private int reciclados = 0;
+	public int Reciclados
+	{
+		get => reciclados;
+		set
+		{
+			reciclados = value;
+			UpdateRecicladosLabel();
+		}
+	}
+
+	private void UpdateRecicladosLabel()
+	{
+		if (recicladosLabel != null)
+			recicladosLabel.Text = $"Reciclados: {Reciclados}";
+	}
+
+	private double puntuacionBase = 100.0;
+	private int puntuacion = 0;
+	public int Puntuacion
+	{
+		get => puntuacion;
+		set
+		{
+			puntuacion = value;
+			UpdatePuntuacionLabel();
+		}
+	}
+
+	private void UpdatePuntuacionLabel()
+	{
+		if (puntiacionLabel != null)
+			puntiacionLabel.Text = $"Puntos: {Puntuacion}";
+	}
+
+	private double elapsedTime = 0;
+	private double juegoTime = 0;
+	private void UpdateTimerLabel()
+	{
+		if (timerLabel != null)
+			timerLabel.Text = $"Tiempo: {juegoTime}";
+	}
+
+
 
 	public override void _Ready()
 	{
 		_direction = Direction.RIGHT;
-		_body = new([new(1, 0), new(0, 0)]) ;
+		_body = new([new(1, 0), new(0, 0)]);
 		ZIndex = 1;
+		gameOverScreen.Visible = false;
 	}
 
 	public override void _Draw()
 	{
 		foreach (var pos in _body)
 		{
-			GD.Print(pos);
 			Vector2I coords = new() { X = pos.X, Y = pos.Y };
-			DualGrid.SetTile(coords, DualGrid.dirtPlaceholderAtlasCoord);
+			DualGrid.SetTile(coords, DualGrid.grassPlaceholderAtlasCoord);
 		}
 	}
 
-	public bool TryEat(Apple apple)
+	public bool TryEat()
 	{
 		Debug.Assert(_body != null, nameof(_body) + " != null");
-		if (_body.First.Value.X == apple.Position.X && _body.First.Value.Y == apple.Position.Y)
+		var headPosition = _body.First.Value;
+		if (DualGrid.HasTrashAt(headPosition))
 		{
-			GD.Print("Eat Apple!");
-			_eat = true;
+			Reciclados++;
+			Puntuacion += (int)(puntuacionBase * (_body.Count / 10.0));
+			DualGrid.RemoveTrashAt(headPosition);
+			return true;
 		}
-		return _eat;
+		return false;
 	}
 
 	public bool Crash()
@@ -61,7 +115,14 @@ public partial class SnakeBody : Sprite2D
 	public override void _Process(double delta)
 	{
 		_time += delta;
-		if (_time > 0.2)
+		elapsedTime += delta;
+		if (elapsedTime > 1 && !_crash)
+		{
+			juegoTime++;
+			UpdateTimerLabel();
+			elapsedTime = 0;
+		}
+		if (_time > 0.2 && !_crash)
 		{
 			var translation = _direction switch
 			{
@@ -76,8 +137,8 @@ public partial class SnakeBody : Sprite2D
 				var newVect = new Vector2I(_body.First.Value.X, _body.First.Value.Y);
 				newVect += translation;
 				if (newVect.X < 0)
-					newVect = new Vector2I(34, newVect.Y);
-				if (newVect.X > 34)
+					newVect = new Vector2I(33, newVect.Y);
+				if (newVect.X > 33)
 					newVect = new Vector2I(0, newVect.Y);
 				if (newVect.Y < 0)
 					newVect = new Vector2I(newVect.X, 21);
@@ -85,23 +146,54 @@ public partial class SnakeBody : Sprite2D
 					newVect = new Vector2I(newVect.X, 0);
 
 				_body.AddFirst(newVect);
-				if (!_eat)
+				if (!TryEat())
 				{
 					var last = _body.Last.Value;
 					_body.RemoveLast();
-					DualGrid.SetTile(last, DualGrid.grassPlaceholderAtlasCoord);
+					DualGrid.SetTile(last, DualGrid.dirtPlaceholderAtlasCoord);
 				}
 				if (Crash())
 				{
-					GD.Print("CRASH! Game Over");
 					_crash = true;
+					gameOverScreen.Visible = true;
+					statsLabel.Text = $"Puntuacion: {Puntuacion}\nReciclados: {Reciclados}\nTiempo: {juegoTime} segundos";
+					SendMatchToBackend();
 					EmitSignal(SignalName.GameOver);
 				}
 			}
 			if (!_crash)
 				QueueRedraw();
-			_eat = false;
 			_time = 0;
+		}
+	}
+
+	private void SendMatchToBackend()
+	{
+		string[] headers = ["Content-Type: application/json"];
+		httpRequest.RequestCompleted += OnRequestCompleted;
+		Match match = new ()
+		{
+			score = Puntuacion,
+			player_id = 1, //replace con user id
+			date = DateTime.Now.ToString("yyyy-MM-dd"),
+			level = 1,
+			time = (int)juegoTime,
+			recolected = reciclados,
+		};
+		string body = JsonConvert.SerializeObject(match);
+		GD.Print(body);
+		httpRequest.Request($"{url}matches", headers, HttpClient.Method.Post, body);
+	}
+
+	private void OnRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
+	{
+		if (responseCode == 200)
+		{
+			GD.Print($"Success, the request returned {responseCode}");
+		}
+		else
+		{
+			GD.Print($"Error, the request returned {responseCode}");
 		}
 	}
 

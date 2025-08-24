@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_10_150320) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_24_194850) do
   create_table "matches", force: :cascade do |t|
     t.integer "score"
     t.datetime "created_at", null: false
@@ -19,7 +19,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_10_150320) do
     t.string "date"
     t.integer "level"
     t.integer "time"
-    t.integer "points"
     t.integer "recolected"
     t.index ["player_id"], name: "index_matches_on_player_id"
   end
