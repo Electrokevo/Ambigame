@@ -1,14 +1,14 @@
 using Godot;
 using Godot.Collections;
 using System;
-	using System.Text; // For encoding/decoding response body
-	using System.Text.Json; // For parsing JSON responses (optional)
+using System.Text; // For encoding/decoding response body
+using System.Text.Json; // For parsing JSON responses (optional)
 
 
 public partial class RankingScene : MarginContainer
 {
 	private static readonly string url = "http://localhost:3000/";
-	HttpRequest httpRequest;
+	[Export] private HttpRequest httpRequest;
 	private TextEdit _username;
 	public void Volver()
 	{
@@ -17,9 +17,7 @@ public partial class RankingScene : MarginContainer
 
 	public override void _Ready()
 	{
-		httpRequest = GetNode<HttpRequest>("HTTPRequest");
 		httpRequest.RequestCompleted += HttpRequestCompleted;
-
 		httpRequest.Request($"{url}players/1/ranking");
 	}
 	

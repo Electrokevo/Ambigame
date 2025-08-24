@@ -4,6 +4,7 @@ namespace Snake;
 
 public partial class Apple : Sprite2D
 {
+	[Export] DualGridTilemap DualGrid;
 	/// <summary>
 	///     Draws the "apple".
 	///     <para>Instead of DrawCircle we could use a Texture inside Godot IDE.</para>

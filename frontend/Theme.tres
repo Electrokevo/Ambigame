@@ -2516,7 +2516,7 @@ data = {
 [sub_resource type="ImageTexture" id="ImageTexture_y2aw4"]
 image = SubResource("Image_t6dyh")
 
-[sub_resource type="Image" id="Image_7yw46"]
+[sub_resource type="Image" id="Image_y2aw4"]
 data = {
 "data": PackedByteArray("s7OzL7OzszKzs7MGr6+vALS0tAC0tLQAtLS0QLS0tECxsbExtLS0QK+vrzavr68Gr6+vALS0tAC0tLRAtLS0QLGxsQWxsbE0tLS0QK+vrzavr68GtLS0ALS0tEC0tLRAsbGxALGxsQWxsbE0tLS0QLOzszKzs7MAtLS0QLS0tECysrIAsrKyBrKysjW0tLRAsbGxMbGxsQC0tLRAtLS0QLKysgaysrI1tLS0QLKysjWxsbEFtLS0ALS0tEC0tLRAtbW1MLS0tECysrI1srKyBbKysgC0tLQAtLS0QLS0tEC1tbUptbW1MLKysgWysrIAtLS0ALS0tAC0tLRAtLS0QA=="),
 "format": "RGBA8",
@@ -2526,7 +2526,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_dgat3"]
-image = SubResource("Image_7yw46")
+image = SubResource("Image_y2aw4")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4w01"]
 content_margin_left = 4.0

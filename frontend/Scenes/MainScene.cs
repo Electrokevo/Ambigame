@@ -5,7 +5,7 @@ public partial class MainScene : MarginContainer
 {
 	public void Play()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/Snake.tscn");
+		GetTree().ChangeSceneToFile("res://Scenes/MainGame.tscn");
 	}
 
 	public void GoToRanking()

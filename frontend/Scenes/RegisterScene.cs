@@ -6,10 +6,11 @@ using Snakes.Models;
 public partial class RegisterScene : MarginContainer
 {
 	private static readonly string url = "http://localhost:3000/";
-	HttpRequest httpRequest;
-	private TextEdit _username;
-	private TextEdit _password;
-	private TextEdit _password2;
+	[Export] private HttpRequest httpRequest;
+	[Export] private LineEdit _username;
+	[Export] private LineEdit _password;
+	[Export] private LineEdit _password2;
+
 	public void GoToLogin()
 	{
 		GetTree().ChangeSceneToFile("res://Scenes/LoginScene.tscn");
@@ -17,12 +18,7 @@ public partial class RegisterScene : MarginContainer
 	
 	public void Register()
 	{
-		GD.Print("hola");
 		string[] headers = ["Content-Type: application/json"];
-		_username = GetNode<TextEdit>("HBoxContainer/VBoxContainer/Fields/UsernameBox");
-		_password = GetNode<TextEdit>("HBoxContainer/VBoxContainer/Fields/PasswordBox");
-		_password2 = GetNode<TextEdit>("HBoxContainer/VBoxContainer/Fields/PasswordBox2");
-		httpRequest = GetNode<HttpRequest>("HTTPRequest");
 		httpRequest.RequestCompleted += OnRequestCompleted;
 		string body = JsonConvert.SerializeObject(new
 		{

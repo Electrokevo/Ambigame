@@ -10,7 +10,9 @@ public partial class SnakeBody : Sprite2D
 	[Signal]
 	public delegate void GameOverEventHandler();
 
-	private LinkedList<Rect2> _body;
+	[Export] DualGridTilemap DualGrid;
+
+	private LinkedList<Vector2I> _body;
 	private bool _crash;
 
 	private Direction _direction;
@@ -21,26 +23,28 @@ public partial class SnakeBody : Sprite2D
 	public override void _Ready()
 	{
 		_direction = Direction.RIGHT;
-		_body = new([new(0, 0, 40, 40), new(40, 0, 40, 40) ]) ;
+		_body = new([new(1, 0), new(0, 0)]) ;
 		ZIndex = 1;
 	}
 
 	public override void _Draw()
 	{
-		var color = new Color(0, 1, 0);
-		foreach (var rect in _body)
-			DrawRect(new Rect2(rect.Position.X + 2, rect.Position.Y + 2, 36, 36), color);
+		foreach (var pos in _body)
+		{
+			GD.Print(pos);
+			Vector2I coords = new() { X = pos.X, Y = pos.Y };
+			DualGrid.SetTile(coords, DualGrid.dirtPlaceholderAtlasCoord);
+		}
 	}
 
 	public bool TryEat(Apple apple)
 	{
 		Debug.Assert(_body != null, nameof(_body) + " != null");
-		if (_body.First.Value.Position.X == apple.Position.X && _body.First.Value.Position.Y == apple.Position.Y)
+		if (_body.First.Value.X == apple.Position.X && _body.First.Value.Y == apple.Position.Y)
 		{
 			GD.Print("Eat Apple!");
 			_eat = true;
 		}
-
 		return _eat;
 	}
 
@@ -50,7 +54,7 @@ public partial class SnakeBody : Sprite2D
 			.Skip(1)
 			.Any(t =>
 			{
-				return t.Position.X == _body.First.Value.Position.X && t.Position.Y == _body.First.Value.Position.Y;
+				return t.X == _body.First.Value.X && t.Y == _body.First.Value.Y;
 			});
 	}
 
@@ -61,27 +65,32 @@ public partial class SnakeBody : Sprite2D
 		{
 			var translation = _direction switch
 			{
-				Direction.RIGHT => new Vector2(40, 0),
-				Direction.LEFT => new Vector2(-40, 0),
-				Direction.UP => new Vector2(0, -40),
-				_ => new Vector2(0, 40),
+				Direction.RIGHT => new Vector2I(1, 0),
+				Direction.LEFT => new Vector2I(-1, 0),
+				Direction.UP => new Vector2I(0, -1),
+				Direction.DOWN => new Vector2I(0, 1),
+				_ => new Vector2I(0, 0)
 			};
 			if (_body.Count > 0)
 			{
-				var newRect = new Rect2(_body.First.Value.Position, _body.First.Value.Size);
-				newRect.Position += translation;
-				if (newRect.Position.X < 0)
-					newRect.Position = new Vector2(1080, newRect.Position.Y);
-				if (newRect.Position.X > 1080)
-					newRect.Position = new Vector2(0, newRect.Position.Y);
-				if (newRect.Position.Y < 0)
-					newRect.Position = new Vector2(newRect.Position.X, 720);
-				if (newRect.Position.Y > 720)
-					newRect.Position = new Vector2(newRect.Position.X, 0);
+				var newVect = new Vector2I(_body.First.Value.X, _body.First.Value.Y);
+				newVect += translation;
+				if (newVect.X < 0)
+					newVect = new Vector2I(34, newVect.Y);
+				if (newVect.X > 34)
+					newVect = new Vector2I(0, newVect.Y);
+				if (newVect.Y < 0)
+					newVect = new Vector2I(newVect.X, 21);
+				if (newVect.Y > 21)
+					newVect = new Vector2I(newVect.X, 0);
 
-				_body.AddFirst(newRect);
+				_body.AddFirst(newVect);
 				if (!_eat)
+				{
+					var last = _body.Last.Value;
 					_body.RemoveLast();
+					DualGrid.SetTile(last, DualGrid.grassPlaceholderAtlasCoord);
+				}
 				if (Crash())
 				{
 					GD.Print("CRASH! Game Over");
@@ -89,7 +98,6 @@ public partial class SnakeBody : Sprite2D
 					EmitSignal(SignalName.GameOver);
 				}
 			}
-
 			if (!_crash)
 				QueueRedraw();
 			_eat = false;

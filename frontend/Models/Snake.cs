@@ -23,15 +23,15 @@ public partial class Snake : Node2D
 	public override void _Ready()
 	{
 		_snakeBodySize = 40;
-		_gameSize = new Vector2I(30, 20);
+		_gameSize = new Vector2I(34, 21);
 
 		_snakeBody = GetNode<SnakeBody>("SnakeBody");
 		_snakeBody.Position = new Vector2(0, 0);
 
 		_apple = GetNode("Apple") as Apple;
 		_apple.Position = new Vector2(
-			rnd.Next(_gameSize.X) * _snakeBodySize,
-			rnd.Next(_gameSize.Y) * _snakeBodySize
+			rnd.Next(_gameSize.X),
+			rnd.Next(_gameSize.Y)
 		);
 
 		timer = new Timer(4000);
@@ -65,7 +65,7 @@ public partial class Snake : Node2D
 	{
 		if (_apple is not null)
 			RemoveChild(_apple);
-		_apple = new Apple { Position = new Vector2(rnd.Next(0, 15) * 40, rnd.Next(0, 8) * 40) };
+		_apple = new Apple { Position = new Vector2(rnd.Next(0, 15), rnd.Next(0, 8)) };
 
 		// Using Call Deferred to align to main thread,
 		// please read function documentation

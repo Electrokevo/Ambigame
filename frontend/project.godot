@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Snakes"
+config/name="Ambigame"
 run/main_scene="uid://db6cpih6erwgv"
 config/features=PackedStringArray("4.4", "C#", "Mobile")
 run/max_fps=60
