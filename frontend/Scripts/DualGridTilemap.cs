@@ -9,8 +9,10 @@ using static TileType;
 public partial class DualGridTilemap : Node2D {
 	[Export] TileMapLayer worldMapLayer;
 	[Export] TileMapLayer displayMapLayer;
+	[Export] TileMapLayer plantMapLayer;
 	[Export] public Vector2I grassPlaceholderAtlasCoord;
 	[Export] public Vector2I dirtPlaceholderAtlasCoord;
+	private Dictionary<Vector2I, Sprite2D> trashes = new();
 	readonly Vector2I[] NEIGHBOURS = [new(0, 0), new(1, 0), new(0, 1), new(1, 1)];
 
 	readonly Dictionary<Tuple<TileType, TileType, TileType, TileType>, Vector2I> neighboursToAtlasCoord = new() {
@@ -77,6 +79,35 @@ public partial class DualGridTilemap : Node2D {
 			return TrashBag;
 		else
 			return Dirt;
+	}
+
+	public void AddTrash(Vector2I coords)
+	{
+		var sprite = new Sprite2D();
+		sprite.Texture = GD.Load<Texture2D>("res://Assets/Plant.png");
+		sprite.Position = plantMapLayer.MapToLocal(coords);
+		sprite.ZIndex = 2;
+		CallDeferred("add_child", sprite);
+		GD.Print($"Added trash at {coords}");
+		trashes[coords] = sprite;
+	}
+
+	public bool HasTrashAt(Vector2I coords)
+	{
+		return trashes.ContainsKey(coords);
+	}
+
+	public Sprite2D GetTrashAt(Vector2I coords)
+	{
+		return trashes.TryGetValue(coords, out var sprite) ? sprite : null;
+	}
+	public void RemoveTrashAt(Vector2I coords)
+	{
+		if (trashes.TryGetValue(coords, out var sprite))
+		{
+			sprite.QueueFree(); // elimina el nodo de la escena
+			trashes.Remove(coords); // elimina la referencia del diccionario
+		}
 	}
 }
 
