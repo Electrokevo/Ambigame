@@ -89,10 +89,13 @@ class PlayersController < ApplicationController
           }
         },
         global_ranking: @ranking.map { |player|
+          best_match = player.matches.order(score: :desc, created_at: :asc).first
           {
             id: player.id,
             username: player.username,
-            total_score: player.total_score
+            total_score: player.total_score,
+            best_score: best_match&.score || 0,
+            best_score_date: best_match&.created_at
           }
         }
       }
