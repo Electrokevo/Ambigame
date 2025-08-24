@@ -101,6 +101,8 @@ public partial class RankingScene : MarginContainer
 
 		Godot.Collections.Array playerData = (Godot.Collections.Array)_rankingData["global_ranking"];
 
+		Dictionary player = (Dictionary)playerData[playerCount];
+
 		int counter = 0;
 
 		foreach (HBoxContainer hBox in vBox.GetChildren())
@@ -108,7 +110,6 @@ public partial class RankingScene : MarginContainer
 			foreach (Label label in hBox.GetChildren())
 			{
 				label.LabelSettings = mySettings;
-				Dictionary player = (Dictionary)playerData[playerCount];
 
 				if (counter == 0)
 					label.Text = player["username"].ToString();
