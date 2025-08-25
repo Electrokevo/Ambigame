@@ -1,7 +1,9 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.Metrics;
+using System.Linq;
 using System.Text; // For encoding/decoding response body
 using System.Text.Json; // For parsing JSON responses (optional)
 public partial class HistorialScene : MarginContainer
@@ -13,6 +15,9 @@ public partial class HistorialScene : MarginContainer
 	private VBoxContainer _firstColumn;
 	private VBoxContainer _secondColumn;
 	private Dictionary _historyData;
+	private HBoxContainer _generalStats;
+	private int bestScore = 0;
+	private string bestTime = "N/A";
 
 
 	public void Volver()
@@ -25,6 +30,7 @@ public partial class HistorialScene : MarginContainer
 		_historyContainer = GetNode<HBoxContainer>("HBoxContainer").GetNode<VBoxContainer>("VBoxContainer").GetNode<HBoxContainer>("HBoxContainer");
 		_firstColumn = _historyContainer.GetNode<VBoxContainer>("MatchesFirst");
 		_secondColumn = _historyContainer.GetNode<VBoxContainer>("MatchesSecond");
+		_generalStats = GetNode<HBoxContainer>("HBoxContainer").GetNode<VBoxContainer>("VBoxContainer").GetNode<VBoxContainer>("VBoxContainer").GetNode<HBoxContainer>("HBoxContainer");
 
 		httpRequest.RequestCompleted += HttpRequestCompleted;
 		httpRequest.Request($"{url}players/1/ranking");
@@ -48,19 +54,35 @@ public partial class HistorialScene : MarginContainer
 					json.Parse(responseBody);
 					var data = json.GetData().AsGodotDictionary(); // Or deserialize to a custom C# class
 					_historyData = (Dictionary)data["ranking"];
-					GD.Print(_historyData["player_matches"]);
 
 					Godot.Collections.Array matchData = (Godot.Collections.Array)_historyData["player_matches"];
 
 					if (matchData.Count != 0)
+					{
+						List<string> statData = new List<string>();
 						CreateHistoryRows();
+
+						statData.Add(matchData.Count.ToString());
+						statData.Add(bestScore.ToString());
+						statData.Add(bestTime);
+						renderStatData(statData);
+					}
+
 					else
+					{
+						_firstColumn.Hide();
+						_secondColumn.Hide();
 						_historyContainer.AddChild(EmptyHistoryBox());
+						_generalStats.AddChild(EmptyHistoryBox());
+					}
 				}
 				catch (Exception e)
 				{
 					GD.PrintErr($"Error parsing JSON: {e.Message}");
+					_firstColumn.Hide();
+					_secondColumn.Hide();
 					_historyContainer.AddChild(errorBox());
+					_generalStats.AddChild(errorBox());
 
 				}
 			}
@@ -68,7 +90,10 @@ public partial class HistorialScene : MarginContainer
 		else
 		{
 			GD.PrintErr($"HTTP Request failed with result: {result} and response code: {responseCode}");
+			_firstColumn.Hide();
+			_secondColumn.Hide();
 			_historyContainer.AddChild(errorBox());
+			_generalStats.AddChild(errorBox());
 		}
 	}
 
@@ -94,7 +119,39 @@ public partial class HistorialScene : MarginContainer
 		Godot.Collections.Array matchData = (Godot.Collections.Array)_historyData["player_matches"];
 
 		Dictionary player = (Dictionary)matchData[matchCount];
-		GD.Print(player);
+
+		if((int)player["score"] > bestScore)
+			bestScore = (int)player["score"];
+
+		if (player["time"].ToString() != "")
+		{
+			List<string> tiempos = player["time"].ToString().Split(':').ToList();
+			List<int> tiemposInt = tiempos.Select(t => int.Parse(t)).ToList();
+
+			if (bestTime == "N/A")
+			{
+				bestTime = string.Join(":", tiempos);
+			}
+			else
+			{
+				List<string> bestTiempos = bestTime.Split(':').ToList();
+				List<int> bestTiemposInt = bestTiempos.Select(t => int.Parse(t)).ToList();
+
+				if (bestTiemposInt[0] < tiemposInt[0])
+				{
+					bestTime = string.Join(":", tiempos);
+				}
+				else if (bestTiemposInt[0] == tiemposInt[0])
+				{
+					if (bestTiemposInt[1] < tiemposInt[1])
+					{
+						bestTime = string.Join(":", tiempos);
+					}
+				}
+			}
+			
+		}
+		
 
 		int counter = 0;
 
@@ -147,6 +204,35 @@ public partial class HistorialScene : MarginContainer
 		}
 	}
 
+	private void renderStatData(List<string> stats)
+	{
+		renderStatDataRow(stats[0], "Partidas");
+		renderStatDataRow(stats[1], "Mejor Puntuacion");
+		renderStatDataRow(stats[2], "Mejor Tiempo");
+	}
+
+	private void renderStatDataRow(string data, string title)
+	{
+		VBoxContainer statBox = CreateStatBox();
+
+		LabelSettings mySettings = GD.Load<LabelSettings>("res://blackText.tres");
+
+		int counter = 0;
+
+		foreach (Label label in statBox.GetChildren())
+		{
+			label.LabelSettings = mySettings;
+
+			if (counter == 0)
+				label.Text = data;
+			else if (counter == 1)
+				label.Text = title;
+			counter++;
+		}
+
+		_generalStats.AddChild(statBox);
+	}
+
 	private VBoxContainer CreateHistoryBox()
 	{
 		VBoxContainer vbox = new VBoxContainer();
@@ -156,6 +242,26 @@ public partial class HistorialScene : MarginContainer
 		for (int i = 0; i < 4; i++)
 		{
 			createDataRow(vbox);
+		}
+
+		return vbox;
+	}
+
+	private VBoxContainer CreateStatBox()
+	{
+		VBoxContainer vbox = new VBoxContainer();
+		vbox.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+		vbox.SizeFlagsVertical = SizeFlags.ExpandFill;
+
+		for (int i = 0; i < 2; i++)
+		{
+			Label rowInfo = new Label();
+
+			rowInfo.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+
+			rowInfo.HorizontalAlignment = HorizontalAlignment.Center;
+
+			vbox.AddChild(rowInfo);
 		}
 
 		return vbox;
