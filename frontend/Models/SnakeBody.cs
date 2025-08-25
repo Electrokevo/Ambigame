@@ -174,7 +174,7 @@ public partial class SnakeBody : Sprite2D
 		Match match = new ()
 		{
 			score = Puntuacion,
-			player_id = Convert.ToInt32(double.Parse(Player.GetInstance().id)),
+			player_id = Convert.ToInt32(double.Parse(Player.GetInstance().id, System.Globalization.CultureInfo.InvariantCulture)),
 			date = DateTime.Now.ToString("yyyy-MM-dd"),
 			level = 1,
 			time = (int)juegoTime,

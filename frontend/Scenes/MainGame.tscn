@@ -26,13 +26,16 @@ font_size = 14
 font_color = Color(2.59906e-06, 0.731822, 0.199646, 1)
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("DualGrid", "_snakeBody")]
 script = ExtResource("1_ylpyt")
+DualGrid = NodePath("TileMapLayers")
+_snakeBody = NodePath("Snake/SnakeBody")
 
-[node name="TileMapLayers" type="Node2D" parent="." node_paths=PackedStringArray("worldMapLayer", "displayMapLayer")]
+[node name="TileMapLayers" type="Node2D" parent="." node_paths=PackedStringArray("worldMapLayer", "displayMapLayer", "plantMapLayer")]
 script = ExtResource("2_13b5n")
 worldMapLayer = NodePath("WorldLayer")
 displayMapLayer = NodePath("DisplayLayer")
+plantMapLayer = NodePath("PlantLayer")
 dirtPlaceholderAtlasCoord = Vector2i(1, 0)
 
 [node name="WorldLayer" type="TileMapLayer" parent="TileMapLayers"]
@@ -63,9 +66,15 @@ texture = ExtResource("6_e78ew")
 
 [node name="Snake" type="Node2D" parent="."]
 
-[node name="SnakeBody" type="Sprite2D" parent="Snake" node_paths=PackedStringArray("DualGrid")]
+[node name="SnakeBody" type="Sprite2D" parent="Snake" node_paths=PackedStringArray("DualGrid", "puntiacionLabel", "recicladosLabel", "timerLabel", "statsLabel", "gameOverScreen", "httpRequest")]
 script = ExtResource("13_wyocf")
 DualGrid = NodePath("../../TileMapLayers")
+puntiacionLabel = NodePath("../../CanvasLayer/VBoxContainer/Puntuacion")
+recicladosLabel = NodePath("../../CanvasLayer/VBoxContainer/Reciclados")
+timerLabel = NodePath("../../CanvasLayer/VBoxContainer/Tiempo")
+statsLabel = NodePath("../../GameOverScreen/VBoxContainer/Stats")
+gameOverScreen = NodePath("../../GameOverScreen")
+httpRequest = NodePath("../../HTTPRequest")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(0.5, 0.5)

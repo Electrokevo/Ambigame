@@ -6,6 +6,7 @@ using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text; // For encoding/decoding response body
 using System.Text.Json; // For parsing JSON responses (optional)
+using Snakes.Models;
 public partial class HistorialScene : MarginContainer
 {
 	private static readonly string url = "http://localhost:3000/";
@@ -18,6 +19,7 @@ public partial class HistorialScene : MarginContainer
 	private HBoxContainer _generalStats;
 	private int bestScore = 0;
 	private string bestTime = "N/A";
+	Player player;
 
 
 	public void Volver()
@@ -27,13 +29,17 @@ public partial class HistorialScene : MarginContainer
 
 	public override void _Ready()
 	{
+		player = Player.GetInstance();
+		List<string> idLista = player.id.Split('.').ToList();
+		int id = Int32.Parse(idLista[0]);
+		
 		_historyContainer = GetNode<HBoxContainer>("HBoxContainer").GetNode<VBoxContainer>("VBoxContainer").GetNode<HBoxContainer>("HBoxContainer");
 		_firstColumn = _historyContainer.GetNode<VBoxContainer>("MatchesFirst");
 		_secondColumn = _historyContainer.GetNode<VBoxContainer>("MatchesSecond");
 		_generalStats = GetNode<HBoxContainer>("HBoxContainer").GetNode<VBoxContainer>("VBoxContainer").GetNode<VBoxContainer>("VBoxContainer").GetNode<HBoxContainer>("HBoxContainer");
 
 		httpRequest.RequestCompleted += HttpRequestCompleted;
-		httpRequest.Request($"{url}players/1/ranking");
+		httpRequest.Request($"{url}players/{id}/ranking");
 
 	}
 

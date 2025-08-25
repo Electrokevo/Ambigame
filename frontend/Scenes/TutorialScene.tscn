@@ -65,7 +65,7 @@ theme_override_colors/caret_color = Color(0, 0, 0, 1)
 theme_override_colors/search_result_border_color = Color(0, 0, 0, 1)
 theme_override_colors/search_result_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_74byh")
-text = "Controla a tu personaje: Mueves a tu héroe ecológico con las flechas direccionales o las teclas WASD para recolectar residuos esparcidos por el terreno. El objetivo es usar el palo para recoger la basura del entorno.
+text = "Controla a tu personaje: Mueves a tu héroe ecológico con las flechas direccionales o las teclas WASD para recolectar residuos esparcidos por el terreno. El objetivo es recoger la basura del entorno.
 
 Haz crecer tu bolsa de basura: Cada vez que recojas un residuo, tu bolsa de basura se alarga. Cuanto más recojas, más difícil será controlar la longitud de tu bolsa.
 
