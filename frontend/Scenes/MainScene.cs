@@ -1,8 +1,14 @@
 using Godot;
 using System;
+using Snakes.Models;
 
 public partial class MainScene : MarginContainer
 {
+	[Export] private Label _userDataLabel;
+	public override void _Ready()
+	{
+		_userDataLabel.Text = Player.GetInstance().ToString();
+	}
 	public void Play()
 	{
 		GetTree().ChangeSceneToFile("res://Scenes/MainGame.tscn");
@@ -25,6 +31,7 @@ public partial class MainScene : MarginContainer
 
 	public void LogOut()
 	{
+		Player.SetInstance(null);
 		GetTree().ChangeSceneToFile("res://Scenes/LoginScene.tscn");
 	}
 }

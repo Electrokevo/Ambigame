@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 namespace Snakes.Models;
 internal class Player
 {
+
+    private static Player _instance;
+    public static Player GetInstance() => _instance;
+    public static void SetInstance(Player player) => _instance = player;
     public string username { get; set; }
-    public string password { get; set; }
-    public Player(string _username, string _password)
+    public string id { get; set; }
+
+    public override string ToString()
     {
-        username = _username;
-        password = _password; // Start position
+        return $"Username: {username}\nID: {id}";
     }
 }

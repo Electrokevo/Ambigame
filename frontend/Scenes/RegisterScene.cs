@@ -11,6 +11,11 @@ public partial class RegisterScene : MarginContainer
 	[Export] private LineEdit _password;
 	[Export] private LineEdit _password2;
 
+	public override void _Ready()
+	{
+		httpRequest.RequestCompleted += OnRequestCompleted;
+	}
+
 	public void GoToLogin()
 	{
 		GetTree().ChangeSceneToFile("res://Scenes/LoginScene.tscn");
@@ -19,7 +24,6 @@ public partial class RegisterScene : MarginContainer
 	public void Register()
 	{
 		string[] headers = ["Content-Type: application/json"];
-		httpRequest.RequestCompleted += OnRequestCompleted;
 		string body = JsonConvert.SerializeObject(new
 		{
 			username = _username.Text,
@@ -33,6 +37,14 @@ public partial class RegisterScene : MarginContainer
 	{
 		if (responseCode == 200)
 		{
+			var json = new Json();
+			json.Parse(body.GetStringFromUtf8());
+			var response = json.GetData().AsGodotDictionary();
+			Player.SetInstance(new Player
+			{
+				id =  response["player"].AsGodotDictionary()["id"].AsString(),
+				username = response["player"].AsGodotDictionary()["username"].AsString(),
+			});
 			GD.Print($"Success, the request returned {responseCode}");
 			GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
 		}
