@@ -57,7 +57,7 @@ class PlayersController < ApplicationController
     best_score_date = best_match&.created_at
 
     # Obtener los partidos (matches) del jugador
-    player_matches = @player.matches.select(:id, :score, :created_at, :updated_at, :level, :time, :points, :recolected)
+    player_matches = @player.matches.select(:id, :score, :created_at, :updated_at, :level, :time, :recolected)
 
     # Obtener el ranking global de los 5 mejores jugadores, incluyendo al jugador actual
     @ranking = Player.joins("LEFT JOIN matches ON matches.player_id = players.id")
@@ -84,7 +84,6 @@ class PlayersController < ApplicationController
             updated_at: match.updated_at,
             level: match.level,
             time: match.time,
-            points: match.points,
             recolected: match.recolected
           }
         },
