@@ -86,6 +86,11 @@ rails server
 
 Abrir el proyecto en Godot-mono (con soporte para C#) y ejecutar la escena principal (LoginScene.tscn).
 
+### En caso de error
+
+Dentro de la carpeta frontend existe un ejectuble .exe llamado "Ambigame.exe", al hacer doble click a este se puede iniciar el proyecto.
+Tener en cuenta que esto solo sirve para el frontend, el backend se debe iniciar segun el paso 2.
+
 ---
 
 ## 🎮 Cómo jugar
