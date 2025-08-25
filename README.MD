@@ -84,16 +84,15 @@ rails server
 
 ### 3. Ejecutar el front-end
 
-Abrir el proyecto en Godot y ejecutar la escena principal.
+Abrir el proyecto en Godot-mono (con soporte para C#) y ejecutar la escena principal (LoginScene.tscn).
 
 ---
 
 ## 🎮 Cómo jugar
 
 1. Regístrate o inicia sesión.
-2. Elige un nivel.
 3. Mueve al personaje para recolectar basura.
-4. Evita chocar contra ti mismo o los límites.
+4. Evita chocar contra ti mismo.
 5. Acumula puntos y compite en el ranking.
 
 ---
