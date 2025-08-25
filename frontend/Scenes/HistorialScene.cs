@@ -132,7 +132,7 @@ public partial class HistorialScene : MarginContainer
 		if (player["time"].ToString() != "")
 		{
 			List<string> tiempos = player["time"].ToString().Split(':').ToList();
-			List<int> tiemposInt = tiempos.Select(t => int.Parse(t)).ToList();
+			List<int> tiemposInt = tiempos.Select(t => Convert.ToInt32(double.Parse(t))).ToList();
 
 			if (bestTime == "N/A")
 			{
@@ -141,7 +141,7 @@ public partial class HistorialScene : MarginContainer
 			else
 			{
 				List<string> bestTiempos = bestTime.Split(':').ToList();
-				List<int> bestTiemposInt = bestTiempos.Select(t => int.Parse(t)).ToList();
+				List<int> bestTiemposInt = bestTiempos.Select(t => Convert.ToInt32(double.Parse(t))).ToList();
 
 				if (bestTiemposInt[0] < tiemposInt[0])
 				{
