@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://df17scc5wxpal"]
+[gd_scene load_steps=35 format=4 uid="uid://df17scc5wxpal"]
 
 [ext_resource type="TileSet" uid="uid://ydwe2v6t82bg" path="res://Assets/DemoTileSet.tres" id="1_0ynk6"]
 [ext_resource type="Script" uid="uid://bcb66jlp1gqdj" path="res://Models/Snake.cs" id="1_ylpyt"]
@@ -9,6 +9,9 @@
 [ext_resource type="Theme" uid="uid://bm5evw0t3glgv" path="res://Theme.tres" id="8_48eim"]
 [ext_resource type="LabelSettings" uid="uid://c27xfl56525tk" path="res://titles.tres" id="9_73a8k"]
 [ext_resource type="LabelSettings" uid="uid://tjelqaktb831" path="res://text.tres" id="10_q8sds"]
+[ext_resource type="Texture2D" uid="uid://5yyd8xshkk0f" path="res://PlayerAnimations/PlayerAnimations.png" id="11_q8sds"]
+[ext_resource type="Script" uid="uid://cfyiwwvuvvng0" path="res://Scenes/PlayerAnimation.cs" id="11_yr2pg"]
+[ext_resource type="Texture2D" uid="uid://caqh7nwaxrpf0" path="res://PlayerAnimations/PlayerAnimationsInverted.png" id="12_yr2pg"]
 [ext_resource type="Script" uid="uid://csiqjwr0dfdt8" path="res://Models/SnakeBody.cs" id="13_wyocf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3bmkb"]
@@ -25,6 +28,141 @@ shader = ExtResource("6_atlul")
 font_size = 14
 font_color = Color(2.59906e-06, 0.731822, 0.199646, 1)
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylpyt"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(0, 0, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wyocf"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(20, 0, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktwve"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(40, 0, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5sjn"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(60, 0, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc6xl"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(0, 38, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6vqf"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(20, 38, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev6kq"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(40, 38, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn25s"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(60, 38, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glaac"]
+atlas = ExtResource("12_yr2pg")
+region = Rect2(0, 38, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7p2u3"]
+atlas = ExtResource("12_yr2pg")
+region = Rect2(20, 38, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_him8o"]
+atlas = ExtResource("12_yr2pg")
+region = Rect2(40, 38, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgk2h"]
+atlas = ExtResource("12_yr2pg")
+region = Rect2(60, 38, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn26v"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(0, 76, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmrup"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(20, 76, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_im1vy"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(40, 76, 20, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy0n7"]
+atlas = ExtResource("11_q8sds")
+region = Rect2(60, 76, 20, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0wdc3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylpyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wyocf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktwve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5sjn")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc6xl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6vqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev6kq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn25s")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glaac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7p2u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_him8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgk2h")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn26v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmrup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_im1vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy0n7")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D" node_paths=PackedStringArray("DualGrid", "_snakeBody")]
 script = ExtResource("1_ylpyt")
@@ -66,7 +204,7 @@ texture = ExtResource("6_e78ew")
 
 [node name="Snake" type="Node2D" parent="."]
 
-[node name="SnakeBody" type="Sprite2D" parent="Snake" node_paths=PackedStringArray("DualGrid", "puntiacionLabel", "recicladosLabel", "timerLabel", "statsLabel", "gameOverScreen", "httpRequest")]
+[node name="SnakeBody" type="Sprite2D" parent="Snake" node_paths=PackedStringArray("DualGrid", "puntiacionLabel", "recicladosLabel", "timerLabel", "statsLabel", "gameOverScreen", "httpRequest", "player_ani")]
 position = Vector2(0, 2)
 script = ExtResource("13_wyocf")
 DualGrid = NodePath("../../TileMapLayers")
@@ -76,6 +214,7 @@ timerLabel = NodePath("../../CanvasLayer/VBoxContainer/Tiempo")
 statsLabel = NodePath("../../GameOverScreen/VBoxContainer/Stats")
 gameOverScreen = NodePath("../../GameOverScreen")
 httpRequest = NodePath("../../HTTPRequest")
+player_ani = NodePath("../../PlayerAnimation")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -143,6 +282,13 @@ theme = ExtResource("8_48eim")
 text = "Salir"
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="PlayerAnimation" type="Node2D" parent="."]
+script = ExtResource("11_yr2pg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerAnimation"]
+sprite_frames = SubResource("SpriteFrames_0wdc3")
+animation = &"walk_right"
 
 [connection signal="pressed" from="GameOverScreen/VBoxContainer/Again" to="." method="OnAgainPressed"]
 [connection signal="pressed" from="GameOverScreen/VBoxContainer/Salir" to="." method="OnSalirPressed"]

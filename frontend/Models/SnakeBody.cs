@@ -1,10 +1,11 @@
 using Godot;
+using Newtonsoft.Json;
+using Snakes.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Newtonsoft.Json;
-using Snakes.Models;
+using static Godot.TextServer;
 
 namespace Snake;
 
@@ -19,6 +20,8 @@ public partial class SnakeBody : Sprite2D
 	[Export] Label statsLabel;
 	[Export] CanvasLayer gameOverScreen;
 	[Export] HttpRequest httpRequest;
+	[Export] PlayerAnimation player_ani;
+
 	private string url = "http://localhost:3000/";
 
 	private LinkedList<Vector2I> _body;
@@ -69,8 +72,6 @@ public partial class SnakeBody : Sprite2D
 			timerLabel.Text = $"Tiempo: {juegoTime}";
 	}
 
-
-
 	public override void _Ready()
 	{
 		_direction = Direction.RIGHT;
@@ -81,7 +82,7 @@ public partial class SnakeBody : Sprite2D
 
 	public override void _Draw()
 	{
-		foreach (var pos in _body)
+		foreach (var pos in _body.Skip(1))
 		{
 			Vector2I coords = new() { X = pos.X, Y = pos.Y };
 			DualGrid.SetTile(coords, DualGrid.grassPlaceholderAtlasCoord);
@@ -145,13 +146,24 @@ public partial class SnakeBody : Sprite2D
 				if (newVect.Y > 21)
 					newVect = new Vector2I(newVect.X, 0);
 
+				if (_direction == Direction.RIGHT)
+					player_ani.ChangeAnimation("walk_right");
+				if (_direction == Direction.LEFT)
+					player_ani.ChangeAnimation("walk_left");
+				if (_direction == Direction.UP)
+					player_ani.ChangeAnimation("walk_up");
+				if (_direction == Direction.DOWN)
+					player_ani.ChangeAnimation("walk_down");
+
 				_body.AddFirst(newVect);
 				if (!TryEat())
 				{
 					var last = _body.Last.Value;
 					_body.RemoveLast();
+					player_ani.MoveSprite(_body.First.Value, delta);
 					DualGrid.SetTile(last, DualGrid.dirtPlaceholderAtlasCoord);
 				}
+
 				if (Crash())
 				{
 					_crash = true;
