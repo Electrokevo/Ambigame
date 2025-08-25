@@ -10,6 +10,11 @@ public partial class LoginScene : MarginContainer
 	[Export] private LineEdit PasswordBox;
 	[Export] private HttpRequest HTTPRequest;
 	private static readonly string url = "http://localhost:3000/";
+
+	override public void _Ready()
+	{
+		HTTPRequest.RequestCompleted += OnRequestCompleted;
+	}
 	
 	public void GoToMain()
 	{
@@ -24,7 +29,6 @@ public partial class LoginScene : MarginContainer
 	public void LogIn()
 	{
 		string[] headers = ["Content-Type: application/json"];
-		HTTPRequest.RequestCompleted += OnRequestCompleted;
 		string body = JsonConvert.SerializeObject(new
 		{
 			username = UsernameBox?.Text,
@@ -38,6 +42,14 @@ public partial class LoginScene : MarginContainer
 	{
 		if (responseCode == 200)
 		{
+			var json = new Json();
+			json.Parse(body.GetStringFromUtf8());
+			var response = json.GetData().AsGodotDictionary();
+			Player.SetInstance(new Player
+			{
+				id =  response["player"].AsGodotDictionary()["id"].AsString(),
+				username = response["player"].AsGodotDictionary()["username"].AsString(),
+			});
 			GD.Print($"Success, the request returned {responseCode}");
 			GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
 		}
