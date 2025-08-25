@@ -53,6 +53,18 @@ public partial class LoginScene : MarginContainer
 			GD.Print($"Success, the request returned {responseCode}");
 			GetTree().ChangeSceneToFile("res://Scenes/MainScene.tscn");
 		}
+		else if (responseCode == 401)
+		{
+			GD.Print("You are not logged in");
+		}
+		else if (responseCode == 404)
+		{
+			GD.Print("The server is down");
+		}
+		else if (responseCode == 0)
+		{
+			GD.Print("There was not a response (prende el backend!)");
+		}
 		else
 		{
 			GD.Print($"Error, the request returned {responseCode}");

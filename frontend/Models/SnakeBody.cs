@@ -187,14 +187,10 @@ public partial class SnakeBody : Sprite2D
 
 	private void OnRequestCompleted(long result, long responseCode, string[] headers, byte[] body)
 	{
-		if (responseCode == 200)
-		{
+		if (responseCode == 201)
 			GD.Print($"Success, the request returned {responseCode}");
-		}
 		else
-		{
 			GD.Print($"Error, the request returned {responseCode}");
-		}
 	}
 
 	public override void _Input(InputEvent @event)

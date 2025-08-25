@@ -67,6 +67,7 @@ texture = ExtResource("6_e78ew")
 [node name="Snake" type="Node2D" parent="."]
 
 [node name="SnakeBody" type="Sprite2D" parent="Snake" node_paths=PackedStringArray("DualGrid", "puntiacionLabel", "recicladosLabel", "timerLabel", "statsLabel", "gameOverScreen", "httpRequest")]
+position = Vector2(0, 2)
 script = ExtResource("13_wyocf")
 DualGrid = NodePath("../../TileMapLayers")
 puntiacionLabel = NodePath("../../CanvasLayer/VBoxContainer/Puntuacion")
