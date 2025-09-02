@@ -105,7 +105,7 @@ public partial class HistorialScene : MarginContainer
 
 	private void CreateHistoryRows()
 	{
-		for (int i = 0; i < 4 && i < _historyData.Count; i++)
+		for (int i = 0; i < 4 && i < _historyData["player_matches"].AsGodotArray().Count; i++)
 		{
 			VBoxContainer dataRow = CreateHistoryBox();
 
